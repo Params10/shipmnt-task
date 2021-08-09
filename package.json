@@ -6,10 +6,14 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
+    "typescript": "~4.3.2",
+    "@angular/cli": "^12.2.0",
+    "@angular/compiler-cli": "^12.1.5",
     "@angular/animations": "~12.1.0",
     "@angular/cdk": "^12.2.0",
     "@angular/common": "~12.1.0",
@@ -27,8 +31,8 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.0",
-    "@angular/cli": "~12.1.0",
-    "@angular/compiler-cli": "~12.1.0",
+    "@angular/cli": "^12.2.0",
+    "@angular/compiler-cli": "^12.1.5",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.7.0",
