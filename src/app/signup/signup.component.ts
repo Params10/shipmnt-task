@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {SignupService} from '../services/signup.service';
 import { SignupModel } from '../model/SignupModel';
+import { LoginModel } from '../model/LoginModel';
+import { LoginService } from '../services/login.service';
 
 
 @Component({
@@ -14,7 +16,9 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
   signupModel!: SignupModel;
-  constructor(public router: Router,private signupservice: SignupService) { 
+  loginModel!:LoginModel;
+  authtoken!:string;
+  constructor(public router: Router,private signupservice: SignupService,private loginservice:LoginService) { 
 
 
     this.signupForm = new FormGroup({
@@ -36,20 +40,22 @@ export class SignupComponent implements OnInit {
       return;
     }
     this.signupModel= new SignupModel(this.f.email.value,this.f.password.value,this.f.user_name.value);
-
+    this.loginModel = new LoginModel(this.f.email.value,this.f.password.value);
 
     this.signupservice
-      .login(this.signupModel)
+      .signup(this.signupModel)
       .pipe()
       .subscribe(
         data => {
-          this.router.navigate(['/options']);
+          this.router.navigate(['/login']); 
         },
         error => {
           console.log("error");
         }
       );
-
+   
+            
+      this.signupForm.reset();
 
   }
 

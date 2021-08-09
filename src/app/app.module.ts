@@ -10,6 +10,9 @@ import { CategoryComponent } from './category/category.component';
 import { ExpenseComponent } from './expense/expense.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import { MiddlepageComponent } from './middlepage/middlepage.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { LoginComponent } from './login/login.component';
     CategoryComponent,
     ExpenseComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    MiddlepageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -25,7 +29,9 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

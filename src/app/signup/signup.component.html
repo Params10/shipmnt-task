@@ -1,4 +1,4 @@
-<div class="login-page">
+<!-- <div class="login-page">
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             <img src="assets/img.jpeg" width="300px" class="user-avatar" />
@@ -34,4 +34,67 @@
         </div>
     </div>
   </div>
-  
+   -->
+
+
+   <body>
+    <div class="signin">
+        <div class="back-img">
+            <div class="sign-in-text">
+                <h2 class="active">Sign Up</h2>
+
+            </div>
+            <div class="layer">
+            </div>
+            <p class="point">&#9650;</p>
+        </div>
+        <div class="form-section">
+
+            <form [formGroup]="signupForm" (ngSubmit)=" OnSignUp()">
+                <!--Email-->
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" formControlName="email" type="email">
+                    &nbsp;
+                    <label class="mdl-textfield__label">Email</label>
+                </div>
+                <div *ngIf="signupForm.controls['email'].invalid" class="alert alert-danger">
+
+                    <div *ngIf="signupForm.controls['email'].errors?.required" style="color: red;">
+                        Email is required.
+                    </div>
+                </div>
+                <br />
+                <br />
+                <!--Password-->
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input pattern=".{8,}" class="mdl-textfield__input" type="password" formControlName="password">
+                    &nbsp;
+                    <label class="mdl-textfield__label" for="sample3">Password</label>
+                </div>
+                <div *ngIf="signupForm.controls['password'].invalid" class="alert alert-danger">
+
+                    <div *ngIf="signupForm.controls['password'].errors?.required" style="color: red;">
+                        Password is required.
+                    </div>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input pattern=".{8,}" class="mdl-textfield__input" type="text" formControlName="user_name">
+                    &nbsp;
+                    <label class="mdl-textfield__label" for="sample3">User Name</label>
+                </div>
+                <div *ngIf="signupForm.controls['user_name'].invalid" class="alert alert-danger">
+
+                    <div *ngIf="signupForm.controls['user_name'].errors?.required" style="color: red;">
+                       User Name is required.
+                    </div>
+                </div>
+                <br />
+            </form>
+        </div>
+        <!--/.form-section-->
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <button mat-raised-button color="primary" (click)="OnSignUp()">Sign Up</button>
+      
+    </div>
+    <!--/.signin-->
+</body>

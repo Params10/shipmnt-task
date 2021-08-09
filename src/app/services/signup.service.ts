@@ -13,7 +13,7 @@ import { SignupModel } from '../model/SignupModel';
 
     constructor( private http: HttpClient) { }  
 
-    login(smodel:SignupModel):Observable<any>{
+    signup(smodel:SignupModel):Observable<any>{
 
         console.log("Service");
   

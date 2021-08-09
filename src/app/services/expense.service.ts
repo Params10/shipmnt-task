@@ -36,12 +36,16 @@ import { ExpenseModel } from '../model/ExpenseModel';
       }
      getexpense(categoryname:string):Observable<any>
      {
-        let httpHeaders = new HttpHeaders({     
-        });
-        this.authorizationtoken=JSON.stringify(localStorage.getItem("token"));
-        httpHeaders.set('authorization', this.authorizationtoken);
+      this.authorizationtoken=JSON.stringify(localStorage.getItem("token"));
+      this.authorizationtoken = this.authorizationtoken.slice(1, -1);
+      let httpHeaders = new HttpHeaders({
+       
+      });
+
+      httpHeaders = httpHeaders.set('authorization', this.authorizationtoken);
+      // httpHeaders = httpHeaders.set('Access-Control-Allow-Origin','*');
   
-        return this.http.post<Array<ExpenseModel>>(this.API_URL + '/api/v1/user/expense_details/'+categoryname,{ 'headers': httpHeaders })
+        return this.http.post<Array<ExpenseModel>>(this.API_URL + '/api/v1/user/expense_details/'+categoryname,null,{ 'headers': httpHeaders })
         .pipe();
      }
   } 

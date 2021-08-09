@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { LoginModel } from '../model/LoginModel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
@@ -53,10 +54,13 @@ export class LoginComponent implements OnInit {
         data => {
           this.authtoken = data.token;
           localStorage.setItem('token', this.authtoken);
+          this.router.navigate(['/middlepage']); 
+       
           
         },
         error => {
           console.log("error");
+          this.loginForm.reset(); 
         }
       );
 

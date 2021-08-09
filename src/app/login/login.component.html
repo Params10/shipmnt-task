@@ -1,35 +1,98 @@
-<div class="login-page">
+<!-- <div class="login-page">
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             <img src="assets/img.jpeg" width="300px" class="user-avatar" />
             <div class="alert alert-success">
-                
+
             </div>
             <div class="alert alert-danger">
-                
+
             </div>
-            <form [formGroup]="loginForm" (ngSubmit)="onLoggedin()" >
+            <form [formGroup]="loginForm" (ngSubmit)="onLoggedin()">
                 <div class="form-content">
-  
+
                     <div class="form-group">
                         <label class="requiredright">Email</label>
-                        <input type="text" class="form-control"  formControlName="email">
-  
+                        <input type="text" class="form-control" formControlName="email">
+
                     </div>
-  
+                    <div *ngIf="loginForm.controls['email'].invalid" class="alert alert-danger">
+
+                        <div *ngIf="loginForm.controls['email'].errors?.required" style="color: red;">
+                            Email is required.
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="requiredright">Password</label>
-                        <input type="password" class="form-control"  formControlName="password">
-                      
+                        <input type="password" class="form-control" formControlName="password">
+
                     </div>
-                    
-                    
+                    <div *ngIf="loginForm.controls['password'].invalid" class="alert alert-danger">
+
+                        <div *ngIf="loginForm.controls['password'].errors?.required" style="color: red;">
+                            Password is required
+                        </div>
+                    </div>
+
                 </div>
-                <a class="btn rounded-btn" 
-                    (click)="onLoggedin()">Log in</a>
+                <button mat-raised-button color="primary">Login</button>
                 &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Register </a>
+                <button mat-raised-button color="primary" [routerLink]="['/signup']">Register</button>
+
             </form>
         </div>
     </div>
-  </div>
+</div> -->
+
+<body>
+    <div class="signin">
+        <div class="back-img">
+            <div class="sign-in-text">
+                <h2 class="active">Log In</h2>
+
+            </div>
+            <div class="layer">
+            </div>
+            <p class="point">&#9650;</p>
+        </div>
+        <div class="form-section">
+
+            <form [formGroup]="loginForm" (ngSubmit)="onLoggedin()">
+                <!--Email-->
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" formControlName="email" type="email">
+                    &nbsp;
+                    <label class="mdl-textfield__label">Email</label>
+                </div>
+                <div *ngIf="loginForm.controls['email'].invalid" class="alert alert-danger">
+
+                    <div *ngIf="loginForm.controls['email'].errors?.required" style="color: red;">
+                        Email is required.
+                    </div>
+                </div>
+                <br />
+                <br />
+                <!--Password-->
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input pattern=".{8,}" class="mdl-textfield__input" type="password" formControlName="password">
+                    &nbsp;
+                    <label class="mdl-textfield__label" for="sample3">Password</label>
+                </div>
+                <div *ngIf="loginForm.controls['password'].invalid" class="alert alert-danger">
+
+                    <div *ngIf="loginForm.controls['password'].errors?.required" style="color: red;">
+                        Password is required.
+                    </div>
+                </div>
+                <br />
+            </form>
+        </div>
+        <!--/.form-section-->
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <button mat-raised-button color="primary" (click)="onLoggedin()">Login</button>
+        &nbsp;
+        <button mat-raised-button color="primary" [routerLink]="['/signup']">Register</button>
+    </div>
+    <!--/.signin-->
+</body>
